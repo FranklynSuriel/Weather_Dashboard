@@ -9,7 +9,7 @@ var humidity = document.querySelector('.humidity');
 
 button.addEventListener('click', function () {
 
-    fetch('http://api.openweathermap.org/geo/1.0/direct?q=' + inputValue.value + '&appid=232b6c46052204d8ef059e1facae5a19')
+    fetch('https://api.openweathermap.org/geo/1.0/direct?q='+inputValue.value+'&appid=232b6c46052204d8ef059e1facae5a19')
         .then(function (response) {
             return response.json();
         })
