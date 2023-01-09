@@ -50,6 +50,10 @@ input[type="submit"]{
 
 .display{
     text-align: left;
+    padding-left: 8px;
+    border: solid;
+    width: fit-content;
+    background-color: steelblue;
 }
 
 .call5Day{
