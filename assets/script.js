@@ -48,16 +48,14 @@ function searchCity() {
 }
 
 function forecast(){
-    var forecastTitle = document.querySelector('.forecast')
-
-    forecastTitle.innerHTML = "5-Day Forecast"
-
+    var b = 2
+    
     fetch('https://api.openweathermap.org/geo/1.0/direct?q='+inputValue.value+'&appid=232b6c46052204d8ef059e1facae5a19')
     .then(function (response) {
         return response.json();
     })
     .then(function (data) {
-
+        
         console.log(data)
         var latitud = data[0].lat;
         var longitud = data[0].lon;
@@ -68,12 +66,40 @@ function forecast(){
         })
         .then(function (data) {
             console.log(data);
+            for (var i = 1; i < 6; i++) {
+                
+                var icon = $('#icon-' + i);
+                var temp = document.querySelector('.temp-' + i);
+                var wind = document.querySelector('.windSpeed-' + i);
+                var humidity = document.querySelector('.humidity-' + i);
+                
+                
+                var tempValue = data['list'][(3*b)-i]['main']['temp'];
+                var iconValue = data['list'][(3*b)-i]['weather'][0]['icon'];
+                var iconUrl = 'https://openweathermap.org/img/wn/'+iconValue+'.png';                              
+                icon.attr('src', iconUrl);
+                icon.attr('alt','Weather Icon')
+                var windSpeedValue = data['list'][(3*b)-i]['wind']['speed'];
+                var humidityValue = data['list'][(3*b)-i]['main']['humidity'];
+                
+                
+                $('.date-' + i).text(dayjs().add(i,'day').format('MM/D/YYYY'));               
+                temp.innerHTML = 'Temp: ' + tempValue + ' °F';                
+                wind.innerHTML = 'Wind: ' + windSpeedValue + ' mph';
+                humidity.innerHTML = 'Humidity: ' + humidityValue;
+                b = b + 3;
+            }
+            
+            
             
         })
     })
-        
-  
-
+    
+    var forecastTitle = document.querySelector('.forecast5Days')
+    
+    forecastTitle.innerHTML = "5-Day Forecast"
+    
+    
 }
 
 button.addEventListener('click',searchCity);
