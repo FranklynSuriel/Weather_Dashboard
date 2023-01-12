@@ -1,14 +1,15 @@
+// create all global variables
 var button = document.querySelector('.btn');
 var inputValue = document.querySelector('.inputValue');
 var cityName = document.querySelector('.cityName');
+// used jquery to the the Icon from the webpage
 var icon = $('#icon');
 var temperature = document.querySelector('.temp');
 var windSpeed = document.querySelector('.windSpeed');
 var humidity = document.querySelector('.humidity');
-console.log(inputValue.value)
 var historyTitle = document.querySelector('.history');
 
-
+// create a function to fetch the latitud and longitud of a city
 function searchCity() {
 
     fetch('https://api.openweathermap.org/geo/1.0/direct?q='+inputValue.value+'&appid=232b6c46052204d8ef059e1facae5a19')
@@ -20,12 +21,13 @@ function searchCity() {
             var longitud = data[0].lon;           
             
 
-
+            // create a fetch to get the data for the current weather
             fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + latitud + '&lon=' + longitud + '&appid=232b6c46052204d8ef059e1facae5a19&units=imperial')
             .then(function (response) {
                 return response.json();
             })
-            .then(function (data) {              
+            .then(function (data) {  
+                //create varibales to save the data we need to display 
                 var nameValue = data['name'];
                 var tempValue = data['main']['temp'];
                 var iconValue = data['weather'][0]['icon'];
@@ -34,24 +36,21 @@ function searchCity() {
                 icon.attr('alt','Weather Icon')
                 var windSpeedValue = data['wind']['speed'];
                 var humidityValue = data['main']['humidity'];
-                
+                // assign those variable to show on the webpage
                 cityName.innerHTML = nameValue;
                 $('#currentDay').text(dayjs().format('MM/D/YYYY'));               
-                temperature.innerHTML = 'Temp: ' + tempValue + ' °F';
-                // icon.innerHTML =  'http://openweathermap.org/img/wn/'+iconValue+'@2x.png'
+                temperature.innerHTML = 'Temp: ' + tempValue + ' °F';                
                 windSpeed.innerHTML = 'Wind: ' + windSpeedValue + ' mph';
-                humidity.innerHTML = 'Humidity: ' + humidityValue;
-                
+                humidity.innerHTML = 'Humidity: ' + humidityValue;                
             })
         })
-
-
-
+        // get any error names a display and alert
         .catch(err => alert("Wrong city name!"))
-    
+    // call forecast funtion
     forecast();
 
 }
+
 var i = 1
 function searchHistory(){
     
