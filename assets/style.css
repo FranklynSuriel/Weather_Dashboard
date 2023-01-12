@@ -1,7 +1,8 @@
 *{
     margin: 0;
     padding: 0;
-    box-sizing: border-box;    
+    box-sizing: border-box; 
+   
 }
 
 body{
@@ -23,7 +24,7 @@ header{
 
 .input{
     text-align: center;
-    margin: 30px 0;
+    margin-bottom: 16px;
 }
 
 .inputValue{
@@ -33,62 +34,30 @@ header{
    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
    font-weight: bold;
    font-size: 20px;
-   border: none;
-   border-radius: 4px;
+   border: solid;
+   border-radius: 8px;
    padding: 10px 10px;
+   margin-bottom: 12px;
 }
 
 input[type="submit"]{
     height: 50px; 
-    width: 100px;
+    width: 250px;
     background: #e7e7e7;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-weight: bold;
     font-size: 20px;
-    border: none;
-    border-radius: 4px;
-}
-
-.display{
-    text-align: left;
-    padding-left: 12px;
     border: solid;
-    width: fit-content;
-    background-color: steelblue;
+    border-radius: 8px;
 }
 
-.call5Day{
-    display: flex;
-    align-items: flex-end;
-    
-    margin-top: 52px;
-    height: 300px;
+button{
+    border: none;
+    height: 50px; 
+    width: 250px;    
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 8px;
 }
 
-
-.forecast{
-    display: flex;
-    flex-direction: row;
-    /* justify-content: flex-end; */
-    align-items: flex-end;
-    width: 74%;
-    height: 26vh;
-    margin: 0 auto;
-    border-style: solid;
-    border-width: 2px;
-    
-}
-
-.Day{
-    text-align: left;
-    padding-left: 12px;
-    border: solid;    
-    background-color: steelblue;
-    align-content: flex-end;
-}
-
-.forecast5Days{
-    display: flex;
-    justify-content: center;
-    align-self: flex-start;
-}   

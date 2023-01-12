@@ -5,6 +5,8 @@ var icon = $('#icon');
 var temperature = document.querySelector('.temp');
 var windSpeed = document.querySelector('.windSpeed');
 var humidity = document.querySelector('.humidity');
+console.log(inputValue.value)
+var historyTitle = document.querySelector('.history');
 
 
 function searchCity() {
@@ -15,7 +17,9 @@ function searchCity() {
         })
         .then(function (data) {           
             var latitud = data[0].lat;
-            var longitud = data[0].lon;
+            var longitud = data[0].lon;           
+            
+
 
             fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + latitud + '&lon=' + longitud + '&appid=232b6c46052204d8ef059e1facae5a19&units=imperial')
             .then(function (response) {
@@ -37,13 +41,29 @@ function searchCity() {
                 // icon.innerHTML =  'http://openweathermap.org/img/wn/'+iconValue+'@2x.png'
                 windSpeed.innerHTML = 'Wind: ' + windSpeedValue + ' mph';
                 humidity.innerHTML = 'Humidity: ' + humidityValue;
+                
             })
         })
 
 
 
         .catch(err => alert("Wrong city name!"))
+    
     forecast();
+
+}
+var i = 1
+function searchHistory(){
+    
+    var btnHistory = document.querySelector('.btnHistory-'+ i);
+    var city = ['city-'+ i];
+    var actualCity = [inputValue.value]
+    localStorage.setItem(city,actualCity);
+
+    historyTitle.innerHTML = "Recent Search"
+    btnHistory.innerHTML = localStorage.getItem('city-'+ i)
+    
+    i++
 
 }
 
@@ -81,7 +101,9 @@ function forecast(){
                 icon.attr('alt','Weather Icon')
                 var windSpeedValue = data['list'][(3*b)-i]['wind']['speed'];
                 var humidityValue = data['list'][(3*b)-i]['main']['humidity'];
-                
+
+                var forecastTitle = document.querySelector('.forecast5Days')    
+                forecastTitle.innerHTML = "5-Day Forecast"                
                 
                 $('.date-' + i).text(dayjs().add(i,'day').format('MM/D/YYYY'));               
                 temp.innerHTML = 'Temp: ' + tempValue + ' °F';                
@@ -94,12 +116,13 @@ function forecast(){
             
         })
     })
-    
-    var forecastTitle = document.querySelector('.forecast5Days')
-    
-    forecastTitle.innerHTML = "5-Day Forecast"
+    searchHistory();
+   
     
     
 }
 
+    
+
 button.addEventListener('click',searchCity);
+btnHistory.addEventListener('click',searchCity);
