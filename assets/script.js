@@ -10,18 +10,18 @@ var windSpeed = document.querySelector('.windSpeed');
 var humidity = document.querySelector('.humidity');
 var historyTitle = document.querySelector('.history');
 var searchCities = JSON.parse(localStorage.getItem('cities')) || []
-var cityButton = document.createElement('button')
+// var cityButton = document.createElement('button')
 var historyButtons = document.querySelector('.historyButtons')
-historyButtons.innerHTML = ""
+// historyButtons.innerHTML = ""
 
 console.log(typeof searchCities)
 
 // create a function to fetch the latitude and longitude of a city
 function searchCity() {
-    // searchCities.push(inputValue.value);
+    searchCities.push(city);
     // city = inputValue.value 
     console.log(city)
-    // localStorage.setItem("cities", JSON.stringify(searchCities));
+    localStorage.setItem("cities", JSON.stringify(searchCities));
     // searchHistory();
 
     fetch('https://api.openweathermap.org/geo/1.0/direct?q=' + city + '&appid=232b6c46052204d8ef059e1facae5a19')
@@ -123,61 +123,46 @@ function forecast() {
 // We are going to use this variable to assign different city names in local stores
 // var i = 1
 function searchHistory() {
-    // save the city name to local store
-    // var btnHistory = document.querySelector('.btnHistory-'+ i);
-    // var city = ['city-'+ i];
-    // var actualCity = [inputValue.value]
-    // get the city name from local store
-    // localStorage.setItem(city,actualCity);
-
-    // console.log(btnHistory);
-    // console.log(localStorage.getItem('city-'+ i));
-
-    // historyTitle.innerHTML = "Recent Search"
-    // btnHistory.innerHTML = localStorage.getItem('city-'+ i)
-    // increment i to move one space in local store
-    // i++
-    // if(searchCities.length != 0){
-    // }
-
-
+    console.log(searchCities)
+    historyButtons.innerHTML = "";
     for (let index = 0; index < 10 && index < searchCities.length; index++) {
         var cityButton = document.createElement('button')
         cityButton.textContent = searchCities[index]
-        cityButton.classList.add("buttonHistory" + index)
+        cityButton.classList.add("buttonHistory")
         historyButtons.appendChild(cityButton)
 
     }
-    console.log(cityButton)
+    buttonHistory = document.querySelectorAll(".historyButtons button")
 
-
-
+    buttonHistory.forEach(function (button) {
+        button.addEventListener("click", function (event) {
+            console.log(event.target)
+            console.log(button.textContent)
+            city = button.textContent
+            // historyButtons.innerHTML = "";
+            searchCity()
+        })
+    })
 }
-
-function recallCity() {
-    // inputValue = button.textContent
-    // console.log(inputValue)
-    searchCity()
-}
-
 
 searchHistory();
 
 
-button.addEventListener('click', function(event) {
-    city = inputValue.value 
+button.addEventListener('click', function (event) {
+    city = inputValue.value
     searchCity()
+    searchHistory()
 })
 // buttonHistory.addEventListener('click', recallCity);
 buttonHistory = document.querySelectorAll(".historyButtons button")
 
-buttonHistory.forEach(function (button) {
-    button.addEventListener("click", function (event) {
-        console.log(event.target)
-        console.log(button.textContent)
-        city = button.textContent
-        recallCity()
-    })
-})
+// buttonHistory.forEach(function (button) {
+//     button.addEventListener("click", function (event) {
+//         console.log(event.target)
+//         console.log(button.textContent)
+//         city = button.textContent
+//         searchCity()
+//     })
+// })
 
 
