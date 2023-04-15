@@ -11,6 +11,7 @@ var humidity = document.querySelector('.humidity');
 var historyTitle = document.querySelector('.history');
 var searchCities = JSON.parse(localStorage.getItem('cities')) || []
 var historyButtons = document.querySelector('.historyButtons')
+var fiveDays = document.querySelectorAll('.Day')
 
 // create a function to fetch the latitude and longitude of a city
 function searchCity() {
@@ -91,6 +92,7 @@ function forecast() {
                         b = b + 3;
                     }
                 })
+                fiveDays.classList.add('border')
         })
 }
 
@@ -140,7 +142,7 @@ button.addEventListener('click', function (event) {
     if (!cityDuplicated) {
         searchCities.push(city);
         localStorage.setItem("cities", JSON.stringify(searchCities));
-    }
+    }   
 
     // call the searchCity and searchHistory functions
     searchCity()
