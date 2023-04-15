@@ -13,7 +13,7 @@ To use this Weather dashboard webpage, you can open it in a browser. Then, you c
 
 The following image shows the web application's appearance and functionality:
 
-![A user clicks through a day scheduler, add events and save them. Date is shown on the top and any saved event will persist on the screen](./pictures/Weather_Dashboard.jpg)
+![A user clicks through a day scheduler, add events and save them. Date is shown on the top and any saved event will persist on the screen](./pictures/Weather_Dashboard%20new.jpg)
 
 
 ## Credits
