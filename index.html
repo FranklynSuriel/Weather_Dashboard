@@ -22,43 +22,31 @@
     <h1>Weather Dashboard</h1>
   </header>
   <!-- Using bootstrap to help with the page layout -->
-  <main class="container my-5 text-dark">
+  <main class="container my-5 text-dark border shadow-lg p-3 mb-5 bg-body-tertiary rounded">
     <section class="row">
-      <div class="col-12 col-md-3 ">
+      <div class="col-12 w-100">
         <div class="input">
           <h2 id="search">Search for a City:</h2>
           <input type="text" class="inputValue" placeholder="Enter a city">
           <input type="submit" value="submit" class="btn">
         </div>
-        <div class="historyButtons">
-          <h4 class="history"></h4>
-          <!-- Create the buttons for the search history -->
-          <!-- <button class="btnHistory-1"></button>
-          <button class="btnHistory-2"></button>
-          <button class="btnHistory-3"></button>
-          <button class="btnHistory-4"></button>
-          <button class="btnHistory-5"></button>
-          <button class="btnHistory-6"></button>
-          <button class="btnHistory-7"></button>
-          <button class="btnHistory-8"></button>
-          <button class="btnHistory-9"></button>
-          <button class="btnHistory-10"></button> -->
-        </div>
+        <h4 class="history">Search History</h4>
+        <div class="historyButtons"></div>
       </div>
-      <div class="col-12 col-md-9">        
+      <div class="col-12 col-md-8 w-100 p-3 ">
         <div class="col-12">
-          <div class="display">
+          <div class="display container">
             <h4 class="cityName"></h4>
             <p id="currentDay"></p>
             <img id="icon">
             <p class="temp"></p>
             <p class="windSpeed"></p>
             <p class="humidity"></p>
-            <h3 class="forecast5Days"></h3>
           </div>
         </div>
-        <div class="row">
-          <div class="col-12 col-md-2">
+        <h3 class="forecast5Days"></h3>
+        <div class="row w-100">
+          <div class="col-6 col-md-2">
             <div class="Day">
               <h5 class="date-1"></h5>
               <img id="icon-1">
@@ -67,7 +55,7 @@
               <p class="humidity-1"></p>
             </div>
           </div>
-          <div class="col-12 col-md-2">
+          <div class="col-6 col-md-2">
             <div class="Day">
               <h5 class="date-2"></h5>
               <img id="icon-2">
@@ -76,7 +64,7 @@
               <p class="humidity-2"></p>
             </div>
           </div>
-          <div class="col-12 col-md-2">
+          <div class="col-6 col-md-2">
             <div class="Day">
               <h5 class="date-3"></h5>
               <img id="icon-3">
@@ -85,7 +73,7 @@
               <p class="humidity-3"></p>
             </div>
           </div>
-          <div class="col-12 col-md-2">
+          <div class="col-6 col-md-2">
             <div class="Day">
               <h5 class="date-4"></h5>
               <img id="icon-4">
@@ -94,7 +82,7 @@
               <p class="humidity-4"></p>
             </div>
           </div>
-          <div class="col-12 col-md-2">
+          <div class="col-6 col-md-2">
             <div class="Day">
               <h5 class="date-5"></h5>
               <img id="icon-5">
